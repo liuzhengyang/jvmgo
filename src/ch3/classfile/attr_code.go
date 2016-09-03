@@ -27,7 +27,7 @@ func (self *CodeAttribute) readInfo(reader *ClassReader) {
 
 func readExceptionTable(reader *ClassReader) []*ExceptionTableEntry{
 	val := reader.readUint16()
-	exceptionTableEntrys := make([]ExceptionTableEntry, val)
+	exceptionTableEntrys := make([]*ExceptionTableEntry, val)
 	for i := range exceptionTableEntrys {
 		exceptionTableEntrys[i] = &ExceptionTableEntry{
 			startPc:reader.readUint16(),

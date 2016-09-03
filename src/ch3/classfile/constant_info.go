@@ -37,18 +37,18 @@ func readConstantInfo(reader *ClassReader, cp ConstantPool) ConstantInfo {
 
 func newConstantPoolInfo(tag uint8, cp ConstantPool) ConstantInfo {
 	switch tag {
-	case CONSTANT_Class: return &ConstantClassInfo{cp}
-	case CONSTANT_Fieldref: return &ConstantFieldInfo{cp}
-	case CONSTANT_Methodref: return &ConstantMethodInfo{cp}
-	case CONSTANT_InterfaceMethodref: return *ConstantInterfaceInfo{cp}
-	case CONSTANT_String: return &ConstantStringInfo{cp}
-	case CONSTANT_Integer: return *ConstantIntegerInfo{}
-	case CONSTANT_Float: return *ConstantFloatInfo{}
-	case CONSTANT_Long: return *ConstantLongInfo{}
-	case CONSTANT_Double: return *ConstantDoubleInfo{}
-	case CONSTANT_NameAndType: return *ConstantNameAndTypeInfo{}
-	case CONSTANT_Utf8: return *ConstantUtf8Info{}
-	default: panic("unsupported constant pool info, " + tag)
+	case CONSTANT_Class: return &ConstantClassInfo{cp:cp}
+	case CONSTANT_Fieldref: return &ConstantFieldrefInfo{ConstantMemberInfo{cp:cp}}
+	case CONSTANT_Methodref: return &ConstantMethodrefInfo{ConstantMemberInfo{cp:cp}}
+	case CONSTANT_InterfaceMethodref: return &ConstantInterfacerefInfo{ConstantMemberInfo{cp:cp}}
+	case CONSTANT_String: return &ConstantStringInfo{cp:cp}
+	case CONSTANT_Integer: return &ConstantIntegerInfo{}
+	case CONSTANT_Float: return &ConstantFloatInfo{}
+	case CONSTANT_Long: return &ConstantLongInfo{}
+	case CONSTANT_Double: return &ConstantDoubleInfo{}
+	case CONSTANT_NameAndType: return &ConstantNameAndTypeInfo{}
+	case CONSTANT_Utf8: return &ConstantUtf8Info{}
+	default: panic("unsupported constant pool info tag")
 	}
 }
 

@@ -5,7 +5,7 @@ type ExceptionAttribute struct {
 }
 
 func (self *ExceptionAttribute) readInfo(reader *ClassReader) {
-	self.exceptionIndexTable = reader.readUint16()
+	self.exceptionIndexTable = reader.readUint16s()
 }
 
 func (self *ExceptionAttribute) ExceptionIndexTable() []uint16 {

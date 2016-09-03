@@ -15,18 +15,18 @@ func (self *ConstantMemberInfo) ClassName() string {
 	return self.cp.getClassName(self.classIndex)
 }
 
-func (self *ConstantMemberInfo) NameAndDescriptor() string {
+func (self *ConstantMemberInfo) NameAndDescriptor() (string, string) {
 	return self.cp.getNameAndType(self.nameAndTypeIndex)
 }
 
-type ConstantFieldInfo struct {
+type ConstantFieldrefInfo struct {
 	ConstantMemberInfo
 }
 
-type ConstantMethodInfo struct {
+type ConstantMethodrefInfo struct {
 	ConstantMemberInfo
 }
 
-type ConstantInterfaceInfo struct {
+type ConstantInterfacerefInfo struct {
 	ConstantMemberInfo
 }

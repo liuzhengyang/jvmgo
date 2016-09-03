@@ -43,7 +43,7 @@ func (self *ZipEntry) readClass(className string) ([]byte, Entry, error) {
 			return data, self, nil
 		}
 	}
-	return nil, nil, errors.New("test")
+	return nil, nil, errors.New("error")
 }
 
 func (self *ZipEntry) String() string {

@@ -24,10 +24,10 @@ func readAttribute(reader *ClassReader, cp ConstantPool) AttributeInfo {
 
 func newAttributeInfo(attributeName string, attrlen uint32, cp ConstantPool) AttributeInfo {
 	switch attributeName {
-	case "Code": return &CodeAttribute{}
+	case "Code": return &CodeAttribute{cp:cp}
 	case "ConstantValue": return &ConstantAttrValue{}
 	case "Exceptions": return &ExceptionAttribute{}
-		default: return &UnparsedAttribute{}
+		default: return &UnparsedAttribute{name:attributeName, length:attrlen}
 	}
 }
 

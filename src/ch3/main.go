@@ -51,10 +51,10 @@ func printClassInfo(cf *classfile.ClassFile) {
 	fmt.Printf("interfaces: %v\n", cf.InterfaceNames())
 	fmt.Printf("fields count: %v\n", len(cf.Fields()))
 	for _, f := range cf.Fields() {
-		fmt.Printf("	%s\n", f.Name())
+		fmt.Printf("\t0x%x\t%s\t%s\n", f.AccessFlags(), f.Descriptor(), f.Name())
 	}
 	fmt.Printf("methods count: %v\n", len(cf.Methods()))
 	for _, m := range cf.Methods() {
-		fmt.Printf("	%s\n", m.Name())
+		fmt.Printf("\t0x%x\t%s\t%s\n", m.AccessFlags(), m.Descriptor(), m.Name())
 	}
 }

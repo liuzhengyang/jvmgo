@@ -21,8 +21,6 @@ func (self CompositeEntry) readClass(className string) ([]byte, Entry, error) {
 	for _, entry := range self {
 		fmt.Printf("entry : %s", entry.String())
 		data, from, err := entry.readClass(className)
-		fmt.Printf("err %s\n", err)
-		fmt.Printf("err %s\n", err != nil)
 		if err == nil {
 			return data, from, nil
 		}

@@ -1,5 +1,7 @@
 package classfile
 
+import "fmt"
+
 type MemberInfo struct {
 	cp ConstantPool
 	accessFlags uint16
@@ -14,11 +16,11 @@ func readMembers(reader *ClassReader, cp ConstantPool) []*MemberInfo {
 	for i := range members {
 		members[i] = readMember(reader, cp)
 	}
-	return memberCount
+	return members
 }
 
 func readMember(reader *ClassReader, cp ConstantPool) *MemberInfo {
-	return *MemberInfo{
+	return &MemberInfo{
 		cp: cp,
 		accessFlags: reader.readUint16(),
 		nameIndex: reader.readUint16(),
@@ -28,7 +30,7 @@ func readMember(reader *ClassReader, cp ConstantPool) *MemberInfo {
 }
 
 func (self *MemberInfo) AccessFlags() uint16 {
-
+	return self.accessFlags
 }
 
 func (self *MemberInfo) Name() string {
@@ -37,6 +39,10 @@ func (self *MemberInfo) Name() string {
 
 func (self *MemberInfo) Descriptor() string {
 	return self.cp.getUtf8(self.descriptorIndex)
+}
+
+func (self *MemberInfo) String() string {
+	return fmt.Sprintf("accessFlags %d, name %s, descriptor %s", self.accessFlags, self.Name(), self.Descriptor())
 }
 
 

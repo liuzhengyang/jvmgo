@@ -69,16 +69,6 @@ func (self *Classpath) parseUserClassPath(cpOption string) {
 func (self *Classpath) ReadClass(className string) ([]byte, Entry, error) {
 	className = className + ".class"
 	if data, entry, err := self.bootClasspath.readClass(className); err == nil {
-		if errors.New("error") == nil {
-			fmt.Println("equals")
-		}
-		fmt.Printf("data %s\n", data)
-		fmt.Printf("err %s\n", err)
-		fmt.Printf("err %s\n", err == nil)
-		b := (err == nil)
-		fmt.Printf("b %s\n", b)
-		fmt.Printf("b %s\n", errors.New("error"))
-		fmt.Printf("b %s\n", (errors.New("error") == nil))
 		return data, entry, err
 	}
 	if data, entry, err := self.extClasspath.readClass(className); err == nil {
